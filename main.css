@@ -1,0 +1,154 @@
+:root {
+    --color-primary: hsl(351, 13%, 32%);
+    --color-secondary: hsl(27, 65%, 75%);
+    --color-black-a-75: hsla(0, 100%, 0%, .75);
+    box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    font-family: 'IBM Plex Serif', 'Charis SIL', serif;
+}
+
+main {
+    display: grid;
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--color-primary);
+    background-image: url('img/45degreee_fabric_@2X.png');
+    background-size: 315px;
+    background-blend-mode: multiply;
+}
+
+.u-letterpress {
+    text-shadow: 1px 1px 1px hsla(0, 100%, 100%, .6), -1px -1px 1px hsla(0, 100%, 0%, .6);
+}
+
+.number-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.number {
+    box-sizing: content-box;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2ch;
+    height: 2ch;
+    padding: .25em;
+    border-radius: 2em;
+    line-height: 1;
+    font-size: 5vmin;
+    font-weight: 400;
+    color: var(--color-black-a-75);
+    background-color: var(--color-secondary);
+    box-shadow: 0 0 0 .0625em var(--color-black-a-75), .0625em .0625em 0 .0625em var(--color-black-a-75);
+}
+
+.big.number {
+    font-size: 20vmin;
+}
+
+.picked-numbers {
+    position: relative;
+    left: -50%;
+    transform: translateX(calc(5vmin + .25rem));
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    overflow-x: scroll;
+}
+
+.picked-numbers .number {
+    margin: .5rem;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(13ch, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+}
+
+button {
+    --box-shadow-flat: 0 .0625em .125em .0625em hsla(0, 100%, 0%, .2);
+    position: relative;
+    align-self: end;
+    box-sizing: content-box;
+    padding: .25em;
+    appearance: none;
+    border: .1875em solid hsla(0, 100%, 0%, .2);
+    border-radius: .75em;
+    line-height: 1.5;
+    font-family: inherit;
+    font-size: 5vmin;
+    font-weight: 700;
+    font-style: italic;
+    background-color: goldenrod;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: var(--box-shadow-flat);
+    transition: transform .4s, box-shadow .4s;
+}
+
+button:hover,
+button:focus {
+    outline: none;
+    box-shadow: 0 .25em .5em .25em hsla(0, 100%, 0%, .2);
+    transform: translateY(-5%);
+}
+
+button:active {
+    box-shadow: var(--box-shadow-flat);
+    transform: translateY(0);
+    transition-duration: 0s;
+}
+
+button::after {
+    content: '';
+    position: absolute;
+    top: -1000%;
+    right: 120%;
+    bottom: -1000%;
+    z-index: 1;
+    width: 10%;
+    transform: rotate(30deg);
+    opacity: .6;
+    background-color: #fff;
+    transition: transform .4s;
+}
+
+button:hover::after,
+button:focus::after {
+    transform: rotate(30deg) translateX(1200%);
+}
+
+.all-numbers {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(9, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+    padding: 2rem 1rem 2rem;
+    border-top: .125em solid var(--color-black-a-75);
+}
+
+.all-numbers .number {
+    opacity: .1;
+    justify-self: center;
+}
+
+.all-numbers .number.picked {
+    opacity: 1;
+}
